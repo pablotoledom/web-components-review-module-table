@@ -77,11 +77,24 @@
     static get observedAttributes() {
       return ['width'];
     }
-    
+        
+    // Lifecycle
+    // When the component is connected
+    connectedCallback() {
+      console.log('Table module element added to page.');
+    }
+
+    // When any of observed attributes has changed
     attributeChangedCallback(name, oldValue, newValue) {
+      console.log('Table module has seen a change.');
       if (name == 'width'){
         this.shadowRoot.querySelector('#module-content').style.width =`${newValue}%`;
       }
+    }
+
+    // When the component is removed
+    disconnectedCallback() {
+      console.log('Table module element removed from page.');
     }
   }
 
